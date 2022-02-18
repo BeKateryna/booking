@@ -1,0 +1,22 @@
+[{
+  "id": 1,
+  "date": "1646690400000",
+  "destination": "Lviv",
+  "seats": 50
+}, {
+  "id": 2,
+  "date": "1646085600000",
+  "destination": "Kharkiv",
+  "seats": 5
+}, {
+  "id": 3,
+  "date": "1645048800000",
+  "destination": "Vilnus",
+  "seats": 0
+}, {
+  "id": 4,
+  "date": "1647295200000",
+  "destination": "Kiev",
+  "seats": 100
+}
+]
