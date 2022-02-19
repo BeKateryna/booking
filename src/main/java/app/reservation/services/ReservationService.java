@@ -14,6 +14,7 @@ public class ReservationService {
     public ReservationService() throws IOException {reservationDao = new ReservationDao();}
 
     public ReservationService(ReservationDao reservationDao) {
+
         this.reservationDao = reservationDao;
     }
 
@@ -22,11 +23,10 @@ public class ReservationService {
                 .map(UserModel::getId)
                 .collect(Collectors.toList());
         try {
-            ReservationModel existReservation = reservationDao.findReservationByFlightId(flightId);
-            if (existReservation != null) {
-                existReservation.getPassengers().addAll(passengers);
-                return reservationDao.addNewReservation(existReservation);
-//                return reservationDao.addNewReservation(existReservation);
+            ReservationModel reservationFromDataBase = reservationDao.findReservationByFlightId(flightId);
+            if (reservationFromDataBase != null) {
+                reservationFromDataBase.getPassengers().addAll(passengers);
+                return reservationDao.addNewReservation(reservationFromDataBase);
             } else {
                 ReservationModel newReservation = new ReservationModel();
                 String id = UUID.randomUUID().toString();

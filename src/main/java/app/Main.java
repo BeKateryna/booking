@@ -1,6 +1,9 @@
 package app;
 
 import app.console.Console;
+
+import java.io.Console;
+
 public class Main {
     public static void main(String[] args) {
         try {

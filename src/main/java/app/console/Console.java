@@ -116,8 +116,9 @@ public class Console {
             Map<String, Long> userReserves = reservationController.getUserReserves(name, lastName);
             if (userReserves != null && userReserves.size() < 1) {
                 System.out.println("<<< У вас нет забронированных рейсов >>>");
-            } else if(userReserves == null) {
-//                System.out.println("<<< У вас нет забронированных рейсов >>>");
+            }
+            else if(userReserves == null) {
+                System.out.println("<<< У вас нет забронированных рейсов >>>");
             } else {
                 System.out.println("<<<Ваши забронированные рейсы >>>");
                 userReserves.forEach((reservationId, flightId) -> {
@@ -176,7 +177,8 @@ public class Console {
         for (int i = 0; i < numbOfPassengers; i++) {
             String name = readString("Введите имя латиницей");
             String lastName = readString("Введите фамилию латиницей");
-//            userService.create(name,lastName);
+//            UserModel user = userService.createUser(name, lastName);
+//            passengerList.add(user);
             passengerList.add(userService.createUser(name, lastName));
         }
         ReservationModel reserve = reservationController.reserve(passengerList, flightRoute.getId());

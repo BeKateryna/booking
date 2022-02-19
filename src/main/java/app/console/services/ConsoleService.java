@@ -10,23 +10,23 @@ import java.util.regex.Pattern;
 public class ConsoleService {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String readCommand(String section) {
+    public static String readCommand(String option) {
         String input;
-        List<String> allowedCommands = new ArrayList<>(
+        List<String> commands = new ArrayList<>(
                 Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9")
         );
 
-        if (section.equals("bookingMenu")) {
-            allowedCommands = new ArrayList<>(
+        if (option.equals("bookingMenu")) {
+            commands = new ArrayList<>(
                     Arrays.asList("1", "2"));
         }
 
         while (true) {
             System.out.println("\nВведите комманду: ");
             input = scanner.nextLine().trim().toLowerCase().split(" ")[0];
-            if (allowedCommands.contains(input)) return input;
+            if (commands.contains(input)) return input;
             System.out.println("Вы ввели не существующую комманду. Пожалуйста, попробуйте снова.");
-            System.out.println("Список рсуществующих комманд выведен на экран.");
+            System.out.println("Список комманд выведен на экран.");
         }
     }
 

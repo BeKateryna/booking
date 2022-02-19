@@ -15,7 +15,6 @@ public class UserDao {
     }
 
     public UserModel createUser(UserModel userModel) throws IOException {
-//    public UserModel createUserDB (UserModel userModel) throws IOException {
         List<UserModel> userDataBaseList = findAll();
         userDataBaseList.add(userModel);
         updateUserDataBase(userDataBaseList);

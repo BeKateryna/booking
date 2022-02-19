@@ -28,11 +28,11 @@ public class ReservationDao {
 
     public ReservationModel addNewReservation(ReservationModel newReservationModel) throws IOException {
         List<ReservationModel> newReservationList = findAll().stream()
-                .map(rm -> {
-                    if (rm.getId().equals(newReservationModel.getId())) {
+                .map(reservationModel -> {
+                    if (reservationModel.getId().equals(newReservationModel.getId())) {
                         return newReservationModel;
                     } else {
-                        return rm;
+                        return reservationModel;
                     }
                 })
                 .collect(Collectors.toList());
@@ -67,11 +67,13 @@ public class ReservationDao {
         return findAll().stream()
                 .filter(reservationModel -> reservationModel.getPassengers().contains(user.getId()))
                 .collect(Collectors.toMap(ReservationModel::getId, ReservationModel::getFlightId));
+
     }
 
     public List<ReservationModel> findAll() throws IOException {
         ObjectMapper om = new ObjectMapper();
-        return om.readValue(reservationDataBase, new TypeReference<List<ReservationModel>>() {});
+        return om.readValue(reservationDataBase, new TypeReference<List<ReservationModel>>() {
+        });
     }
 
     private void updateReservationDataBase(List<ReservationModel> reservationModelList) throws IOException {
